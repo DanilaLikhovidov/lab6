@@ -1,0 +1,20 @@
+def cast(data_type):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            if data_type == 'str':
+                return str(result)
+            if data_type == "int":
+                return int(result)
+            if data_type == "list":
+                return list(result)
+        return wrapper
+    return decorator
+@cast("str")
+def multiply(a, b):
+    return a * b
+
+result = multiply(4, 5.2)
+print(type(result))
+print(result)
+
